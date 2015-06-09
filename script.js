@@ -49,3 +49,7 @@ model.nodeDataArray = [
 ];
 
 myDiagram.model = model;
+
+//Adding a tree layout to the diagram
+var layout = $(go.TreeLayout, { angle: 90, layerSpacing: 35 });
+myDiagram.layout = layout;
