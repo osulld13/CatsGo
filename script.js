@@ -51,5 +51,18 @@ model.nodeDataArray = [
 myDiagram.model = model;
 
 //Adding a tree layout to the diagram
-var layout = $(go.TreeLayout, { angle: 90, layerSpacing: 35 });
+var layout = $(go.TreeLayout, { angle: 0, layerSpacing: 35 });
 myDiagram.layout = layout;
+
+var linkTemplate =
+$(go.Link,
+  //Default routing is go.Link.Normal
+  //Default corner is 0
+  { routing: go.Link.Orthogonal, corner: 5 },
+  //the shape of the link
+  $(go.Shape, {strokeWidth: 3, stroke: "#555"})
+  //An arrow head could be added with the followin code:
+  // ,$(go.Shape, { toArrow: "Standard", stroke: null })
+);
+
+myDiagram.linkTemplate = linkTemplate;
