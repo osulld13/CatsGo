@@ -18,16 +18,34 @@ myDiagram.nodeTemplate =
       "Default Text",
       //initial style values for text
       { margin: 12, stroke: "white", font: "bold 16px sans-serif" },
-      //the text will be bound to the text attribute in the model 
+      //the text will be bound to the text attribute in the model
       new go.Binding("text", "name"))
 );
 
-var model = $(go.Model);
+// //creates a directed link graph
+// //nodes are linked according to their keys
+// var model = $(go.GraphLinksModel);
+// model.nodeDataArray = [
+//   { key: "A", name: "Don Meow", source: "cat1.png" },
+//   { key: "B", name: "Copricat", source: "cat2.jpg" },
+//   { key: "C", name: "Demeter", source: "cat2.png" },
+//   { /* Empty data */ }
+// ];
+// model.linkDataArray = [
+//   { from: "A", to: "B" },
+//   { from: "B", to: "C" }
+// ];
+
+//Tree model creates a tree using the nodes
+//nodes are specified using the key attribute and the parent attribute can refer to a key which is the parent of a node.
+var model = $(go.TreeModel);
 model.nodeDataArray = [
-  { name: "Don Meow", source: "cat1.png" },
-  { name: "Copricat", source: "cat2.jpg" },
-  { name: "Demeter", source: "cat2.png" },
-  { /*name: "Kool Kat", source: "cat3.jpg"*/ }
+  { key: "1",                name: "Don Meow",   source: "cat1.png" },
+  { key: "2", parent: "1",  name: "Demeter",    source: "cat2.jpg" },
+  { key: "3", parent: "1",  name: "Copricat",   source: "cat2.png" },
+  { key: "4", parent: "3",  name: "Jellyorum",  source: "cat3.jpg" },
+  { key: "5", parent: "3",  name: "Alonzo"                         },
+  { key: "6", parent: "2",  name: "Munkustrap" }
 ];
 
 myDiagram.model = model;
